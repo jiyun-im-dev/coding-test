@@ -1,26 +1,16 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		long count = sc.nextLong();
-		String num = sc.next();
-		String[] numArray;
-		numArray = num.split("");
-		long sum = 0;
-		for (int i = 0; i < count; i++) {
-			sum += Integer.parseInt(numArray[i]) % 10;
-		}
-		System.out.println(sum);
-		/* 틀린 코드 - 일정 범위 이상의 수는 계산 불가능
-		Scanner sc = new Scanner(System.in);
-		long count = sc.nextLong();
-		long num = sc.nextLong();
-		long sum = 0;
-		for (long i = 0; i < count; i++) {
-			sum += num % 10;
-			num /= 10;
-		}
-		System.out.println(sum);*/
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int sum = 0;
+        String s = br.readLine();
+        int[] nums = s.chars().map(c -> c - '0').toArray();
+        for (int num : nums) {
+            sum += num;
+        }
+        System.out.println(sum);
+    }
 }
