@@ -1,0 +1,13 @@
+SELECT
+    name AS NAME
+    , count(*) AS COUNT
+FROM
+    animal_ins
+WHERE
+    name IS NOT NULL
+GROUP BY
+    name
+HAVING
+    count > 1
+ORDER BY
+    name
