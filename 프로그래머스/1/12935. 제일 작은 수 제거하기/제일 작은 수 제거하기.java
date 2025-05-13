@@ -1,19 +1,29 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(int[] arr) {
-        List<Integer> answerList = new ArrayList<>();
-        int minValue = Arrays.stream(arr).min().orElseThrow(NoSuchElementException::new);
-        for (int i : arr) {
-            if (i != minValue) {
-                answerList.add(i);
+        int[] answer = new int[arr.length - 1];
+        
+        //빈 배열인 경우 -1 채우기
+        if(arr.length ==1) {
+            return new int[]{-1};
+        }
+        
+        //최솟값 구하기
+        int min = arr[0];
+        for(int a : arr) {
+            if(min > a) {
+                min = a;
             }
         }
         
-        if (answerList.size() == 0) {
-            answerList.add(-1);
+        //배열 채우기
+        int i = 0;
+        for(int b : arr) {
+            if(b != min) {
+                answer[i] = b;
+                i++;
+            }
         }
         
-        return answerList.stream().mapToInt(i -> i).toArray();
+        return answer;
     }
 }
